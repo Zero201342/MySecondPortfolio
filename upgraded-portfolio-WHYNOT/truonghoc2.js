@@ -37,3 +37,28 @@ document.querySelector('.home-icon').addEventListener('mouseup', () => {
     document.querySelector('.home-icon').style.transform = 'scale(1)';
     document.querySelector('.home-icon').style.transition = 'transform 0.1s ease';
 });
+
+// Chặn F12
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'F12') {
+        event.preventDefault();
+    }
+});
+
+// Chặn Ctrl+U
+document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.key === 'u') {
+        event.preventDefault();
+    }
+});
+
+// Chặn Ctrl+Shift+I (mở DevTools)
+document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.shiftKey && event.key === 'I') {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+});
