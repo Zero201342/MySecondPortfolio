@@ -1,0 +1,248 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Đặt chiều cao nhỏ hơn để phần footer không bị che */
+    width: 100vw;
+    overflow: hidden;
+}
+
+.section {
+    position: relative;
+    flex: 1;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.default-img, .hover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.default-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.section:hover .hover-img {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.content {
+    z-index: 3; /* Đảm bảo văn bản hiển thị trên tất cả */
+}
+
+.content i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 3; /* Đặt z-index cao để luôn hiển thị phía trên */
+}
+
+.contact-icons {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.7); /* Tạo nền mờ để nổi bật hơn */
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.contact-icons a {
+    margin: 0 10px;
+    font-size: 30px;
+    color: #fff;
+    transition: transform 0.3s;
+}
+
+.contact-icons a:hover {
+    transform: scale(1.2);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* PHẦN CHO MOBILE */
+
+
+@media (max-width: 768px) {
+    .container {
+        display: none; /* Ẩn phiên bản desktop */
+    }
+
+    /* Ẩn contact desktop trên mobile */
+    .contact-icons {
+        display: none; /* Đảm bảo phần contact của desktop không hiển thị */
+    }
+
+    .logo-text {
+        left: 50%; /* Đẩy phần tử ra giữa màn hình theo chiều ngang */
+        top: 20px; /* Khoảng cách từ đỉnh màn hình */
+        transform: translateX(-50%); /* Căn giữa chính xác */
+        font-size: 28px; /* Giảm kích thước chữ một chút trên màn hình nhỏ */
+    }
+
+    .homebanner {
+        z-index: 50;
+        overflow: hidden;
+        position: relative;
+        width: 100vw;
+        height: 100vh; /* Chiều cao toàn màn hình */
+        max-height: 100vh;
+        margin: 0px;
+    }
+
+    .bannerimg {
+        width: 100%;
+        height: 100%; /* Chiều cao toàn màn hình */
+        position: absolute;
+        z-index: 50;
+        top: 0;
+        transition: transform 0.8s ease, opacity 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        text-decoration: none; /* Đảm bảo các liên kết không có gạch chân */
+        color: inherit; /* Đảm bảo các biểu tượng và chữ giữ nguyên màu */
+    }
+
+    .bannerimg1 {
+        transform: translateY(200%); /* Di chuyển xuống dưới */
+        z-index: 50;
+        opacity: 0.44;
+        transition-delay: 0.2s;
+    }
+
+    .bannerimg2 {
+        transform: translateY(100%); /* Di chuyển xuống một phần */
+        z-index: 51;
+        opacity: 0.4;
+        transition-delay: 0.2s;
+    }
+
+    .bannerimg3 {
+        transform: translateY(0); /* Ở vị trí chính giữa */
+        z-index: 52;
+        opacity: 1;
+        transition: transform 1s ease;
+    }
+
+    .bannerimg4 {
+        transform: translateY(-100%); /* Di chuyển lên trên */
+        z-index: 51;
+        opacity: 0.4;
+        transition-delay: 0.2s;
+    }
+
+    .content {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #fff;
+        z-index: 53; /* Luôn hiển thị trên banner */
+        text-align: center;
+    }
+
+    .mobile-menu-icon {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 100; /* Luôn trên cùng */
+    }
+
+    .mobile-menu {
+        display: none; /* Ẩn mặc định */
+        position: fixed; /* Luôn cố định ở vị trí trên màn hình */
+        top: 50px; /* Đặt menu xuất hiện gần phía trên */
+        right: 10px;
+        flex-direction: column; /* Hiển thị các icon theo chiều dọc */
+        padding: 10px;
+        background-color: rgba(8, 8, 8, 0.77); /* Màu nền với độ mờ */
+        border-radius: 1.5vw;
+        z-index: 110; /* Luôn trên tất cả các phần khác */
+        text-align: center; /* Căn giữa các logo */
+        transition: opacity 0.3s ease, visibility 0.3s ease; /* Thêm hiệu ứng chuyển đổi */
+        opacity: 0; /* Đặt mặc định ẩn */
+        visibility: hidden; /* Ẩn phần tử mặc định */
+    }
+
+    .mobile-menu.active {
+        display: flex; /* Hiển thị khi có class active */
+        opacity: 1; /* Hiển thị menu */
+        visibility: visible; /* Hiển thị phần tử */
+    }
+
+    .mobile-menu a {
+        display: block; /* Đảm bảo các logo xếp theo hàng dọc */
+        padding: 10px; /* Điều chỉnh padding để logo gọn hơn */
+        margin: 5px 0; /* Giảm margin để tạo khoảng cách nhỏ hơn */
+        color: #fff;
+        text-decoration: none;
+        transition: 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+    }
+
+    .mobile-menu a:hover {
+        background-color: #5e5e5ec5; /* Màu nền khi hover */
+        border-radius: 50%; /* Tạo hiệu ứng bo tròn khi hover */
+    }
+
+    /* Điều chỉnh kích thước logo */
+    .mobile-menu a i {
+        font-size: 24px;
+    }
+}
+
+
+
+
+
+
+
+
+
+

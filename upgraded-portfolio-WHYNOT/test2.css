@@ -1,0 +1,263 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden; /* Đảm bảo không có thanh cuộn cho hiệu ứng */
+}
+
+/* Canvas cho hiệu ứng tiny star nền */
+#starBackgroundCanvas {
+    position: fixed; /* Đặt cố định để phủ toàn màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Cho phép các phần tử khác nhận sự kiện chuột */
+    z-index: 1; /* Đảm bảo canvas nằm trên nền nhưng dưới các phần tử nội dung khác */
+}
+
+
+
+.logo-text {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 8px 15px;
+    border-radius: 10px;
+    z-index: 120;
+}
+
+.section-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Đảm bảo chiếm toàn bộ chiều cao màn hình */
+    background-image: url('backchinh1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Căn giữa các phần theo chiều ngang */
+    align-items: center; /* Căn giữa các phần theo chiều dọc */
+    padding: 0;
+    overflow: hidden; /* Ngăn các phần tử tràn ra ngoài */
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.section {
+    position: relative;
+    flex: 1;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.section:hover .hover-img {
+    opacity: 1;
+    transform: scale(1.05); /* Tăng nhẹ để tạo hiệu ứng phóng to khi hover */
+}
+
+.content {
+    z-index: 3;
+    color: #fff;
+}
+
+.content i {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    z-index: 3;
+}
+
+.contact-icons {
+    display: inline-block;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+
+.contact-icons a {
+    margin: 0 10px;
+    font-size: 30px;
+    color: #fff;
+    transition: transform 0.3s;
+}
+
+.contact-icons a:hover {
+    transform: scale(1.2);
+}
+
+/* PHẦN CHO MOBILE */
+@media (max-width: 768px) {
+    .container, .section-container, footer {
+        display: none; /* Ẩn các phần tử desktop */
+    }
+
+    .logo-text {
+        left: 50%;
+        top: 20px;
+        transform: translateX(-50%);
+        font-size: 28px;
+        position: absolute;
+        color: #fff;
+        z-index: 100;
+    }
+
+    .homebanner {
+        z-index: 50;
+        overflow: hidden;
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bannerimg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        transition: transform 0.8s ease, opacity 0.5s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        text-decoration: none;
+        color: inherit;
+    }
+
+    .bannerimg1 {
+        transform: translateY(200%);
+        z-index: 1;
+        opacity: 0.7; /* Điều chỉnh độ trong suốt để sáng rõ hơn */
+        transition-delay: 0.2s;
+    }
+
+    .bannerimg2 {
+        transform: translateY(100%);
+        z-index: 2;
+        opacity: 0.7; /* Điều chỉnh độ trong suốt để sáng rõ hơn */
+        transition-delay: 0.2s;
+    }
+
+    .bannerimg3 {
+        transform: translateY(0);
+        z-index: 3;
+        opacity: 1; /* Phần chính được sáng rõ nhất */
+        transition: transform 1s ease;
+    }
+
+    .bannerimg4 {
+        transform: translateY(-100%);
+        z-index: 2;
+        opacity: 0.7; /* Điều chỉnh độ trong suốt để sáng rõ hơn */
+        transition-delay: 0.2s;
+    }
+
+    .content {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: #fff;
+        z-index: 4;
+        text-align: center;
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        background-color: rgba(8, 8, 8, 0.77);
+        border-radius: 1.5vw;
+        z-index: 110;
+        text-align: center;
+        position: fixed;
+        top: 50px;
+        right: 10px;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        visibility: hidden;
+        transition: max-height 0.5s ease, opacity 0.5s ease;
+    }
+
+    /* Hiển thị menu với hiệu ứng cuộn xuống */
+    .mobile-menu.active {
+        max-height: 200px; /* Thay đổi chiều cao tuỳ ý */
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* CSS cho biểu tượng menu */
+    .mobile-menu-icon {
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 100;
+        touch-action: none; /* Để hỗ trợ kéo thả trên mobile */
+    }
+
+    .mobile-menu a {
+        display: block;
+        padding: 10px;
+        margin: 5px 0;
+        color: #fff;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+
+    .mobile-menu a:hover {
+        background-color: #5e5e5ec5;
+        border-radius: 50%;
+    }
+
+    .mobile-menu a i {
+        font-size: 24px;
+    }
+}

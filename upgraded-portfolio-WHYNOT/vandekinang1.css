@@ -1,0 +1,211 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-color: #222; /* Nền đen cơ bản */
+    color: #fff;
+    padding: 20px;
+    background: linear-gradient(45deg, #000000, #1a237e, #4a148c, #000000); /* Gradient tối */
+    background-size: 300% 300%;
+    animation: gradientMove 10s ease infinite;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* Đảm bảo không có thanh cuộn cho hiệu ứng */
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDEwMDAgMjAwIj4KPHBhdGggZmlsbD0iI0ZGRDAwMCIgZD0iTTAgMGgxMDAwdjE1MGMwLTU1LTUwLTEwMC0xMDAwLTEwMHoiPjwvcGF0aD4KPHBhdGggZmlsbD0iI0ZGQUUwMCIgZD0iTTAgMTAwaDEwMDB2NzBjLTU1LTUwLTEwMC0xMDAtMTAwMC0xMDB6Ij48L3BhdGg+Cjwvc3ZnPg==');
+    background-size: 200% 200%;
+    animation: waveMove 10s linear infinite;
+}
+
+@keyframes waveMove {
+    0% { background-position: 0 0; }
+    100% { background-position: -1000px 0; }
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+/* Điều chỉnh kích thước canvas để phủ toàn màn hình */
+#animatedStarCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Cho phép click xuyên qua canvas */
+    z-index: -1; /* Đảm bảo canvas ở phía sau các phần tử khác */
+}
+
+#btnClickMe {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
+}
+
+#btnClickMe:hover {
+    background-color: #2980b9;
+    box-shadow: 0 0 15px rgba(41, 128, 185, 0.5);
+}
+
+#skillsContainer {
+    padding: 20px;
+    border: 2px solid #444;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    transition: box-shadow 0.3s;
+    text-align: center;
+    margin-bottom: 20px;
+    max-height: 400px; /* Thêm chiều cao cố định */
+    overflow-y: auto; /* Kích hoạt thanh cuộn dọc nếu nội dung dài */
+}
+
+
+
+.skill-items {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.skill-item {
+    margin: 5px;
+}
+
+.skill-icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.skill-icon:hover {
+    box-shadow: 0 0 25px rgba(255, 255, 0, 0.7);
+    transform: scale(1.05); /* Tạo hiệu ứng phóng to nhẹ khi hover */
+}
+
+#skillInfoBox {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #fff;
+    width: 500px;
+    text-align: left;
+    display: block; 
+    white-space: pre-wrap; 
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    max-height: 300px; /* Đặt chiều cao tối đa */
+    overflow-y: scroll; /* Cho phép cuộn dọc */
+    scrollbar-width: none; /* Ẩn thanh cuộn trên Firefox */
+}
+
+#skillInfoBox::-webkit-scrollbar {
+    display: none; /* Ẩn thanh cuộn trên Chrome, Safari */
+}
+
+#skillInfoBox p {
+    margin: 10px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    animation: fadeIn 0.5s ease; /* Thêm hiệu ứng fade-in nhẹ khi xuất hiện */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.nav-home-icon {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 5px;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.nav-home-icon:hover {
+    background-color: #2980b9;
+    box-shadow: 0 0 15px rgba(41, 128, 185, 0.5);
+}
+
+.nav-home-icon i {
+    margin-right: 8px;
+}
+
+/* Responsive Design - Tablet */
+@media (max-width: 768px) {
+    #skillsContainer {
+        width: 90%; 
+    }
+
+    .skill-items {
+        display: grid; 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
+    }
+
+    .skill-icon {
+        width: 100px; 
+        height: 100px;
+    }
+
+    #skillInfoBox {
+        width: 90%; 
+    }
+
+    #btnClickMe {
+        width: 80%; 
+        margin: 10px 0; 
+    }
+
+    .nav-home-icon {
+        width: 80%; 
+        text-align: left;
+        margin-top: 15px;
+    }
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 480px) {
+    .skill-icon {
+        width: 80px; 
+        height: 80px;
+    }
+
+    #btnClickMe, .nav-home-icon {
+        font-size: 14px; 
+    }
+}

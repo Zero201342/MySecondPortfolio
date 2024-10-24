@@ -1,0 +1,229 @@
+/* school.css */
+
+/* Đặt nền và cấu trúc chung */
+.school-section {
+    position: relative;
+    overflow: hidden;
+    background-color: #1a1a2e;
+    color: #fff;
+    padding: 50px 20px;
+    border-radius: 15px;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1500px; /* Thiết lập phối cảnh cho hiệu ứng 3D */
+}
+
+/* Hiệu ứng lật trang sách */
+.school-hover-img {
+    width: 90%;
+    height: 100%;
+    background-image: url('anhback2.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    transform-style: preserve-3d;
+    transition: transform 1s ease, box-shadow 0.5s ease;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.school-section:hover .school-hover-img {
+    transform: rotateY(-15deg); /* Lật nhẹ ảnh như đang mở sách */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Nội dung và chuyển động lượn sóng */
+.school-content {
+    position: absolute;
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    animation: waveMotion 5s infinite ease-in-out;
+    z-index: 2;
+}
+
+
+
+@keyframes waveMotion {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Hiệu ứng biến đổi màu nền */
+.school-section:hover {
+    background: linear-gradient(45deg, #1a1a2e, #16213e, #0f3460);
+    animation: colorShift 5s ease infinite;
+}
+
+@keyframes colorShift {
+    0% { background: #1a1a2e; }
+    50% { background: #0f3460; }
+    100% { background: #1a1a2e; }
+}
+
+/* Hạt bụi lấp lánh */
+@keyframes sparkle {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(0); }
+}
+
+.sparkle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    width: 5px;
+    height: 5px;
+    opacity: 0;
+    animation: sparkle 2s linear infinite;
+}
+
+/* Điều chỉnh kích thước và tốc độ khác nhau */
+.sparkle.small {
+    width: 3px;
+    height: 3px;
+    animation-duration: 1.5s;
+}
+
+.sparkle.large {
+    width: 8px;
+    height: 8px;
+    animation-duration: 3s;
+}
+
+/* Đổ bóng và phản chiếu cho nội dung */
+.school-content {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    transform: translateZ(0);
+    transition: transform 0.5s ease, text-shadow 0.5s ease;
+}
+
+.school-section:hover .school-content {
+    transform: translateZ(30px); /* Nội dung nổi lên khi hover */
+    text-shadow: 3px 3px 15px rgba(255, 255, 255, 0.5);
+}
+
+/* Hiệu ứng đổ bóng và nhấp nháy cho văn bản */
+@keyframes shadowPulse {
+    0%, 100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); }
+    50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+}
+
+.school-content span {
+    display: inline-block;
+    animation: shadowPulse 1.5s ease-in-out infinite;
+}
+
+/* Tăng cường hiệu ứng di chuột qua với chuyển màu */
+.school-section:hover .school-hover-img {
+    filter: saturate(1.2) brightness(1.1);
+    transition: filter 0.8s, transform 0.8s;
+}
+
+/* Hạt bụi lấp lánh nâng cao - sử dụng nhiều màu */
+.sparkle {
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    animation: sparkle 2.5s linear infinite;
+}
+
+.sparkle.pink {
+    background-color: rgba(255, 0, 150, 0.8);
+    box-shadow: 0 0 8px rgba(255, 0, 150, 0.5);
+}
+
+.sparkle.blue {
+    background-color: rgba(0, 200, 255, 0.8);
+    box-shadow: 0 0 8px rgba(0, 200, 255, 0.5);
+}
+
+@keyframes sparkle {
+    0% { opacity: 0; transform: scale(0); }
+    50% { opacity: 1; transform: scale(1.5); }
+    100% { opacity: 0; transform: scale(0); }
+}
+
+/* Đặt vị trí và hiệu ứng cho các hình nhỏ nổi xung quanh */
+@keyframes floatTiny {
+    0% { transform: translateY(0); opacity: 0.6; }
+    100% { transform: translateY(-30px); opacity: 1; }
+}
+
+.tiny-element {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    animation: floatTiny 3s ease-in-out infinite alternate;
+}
+
+/* Nhiều màu sắc khác nhau cho tiny-element */
+.tiny-element.red {
+    background: rgba(255, 0, 0, 0.6);
+}
+
+.tiny-element.green {
+    background: rgba(0, 255, 0, 0.6);
+}
+
+.tiny-element.yellow {
+    background: rgba(255, 255, 0, 0.6);
+}
+
+/* Hiệu ứng rơi nhẹ khi hover */
+@keyframes hoverFall {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(5px); }
+    100% { transform: translateY(0); }
+}
+
+.school-section:hover .tiny-element {
+    animation: hoverFall 2s ease infinite;
+}
+
+/* Hiệu ứng xuất hiện và trượt vào từ trái/phải */
+@keyframes slideIn {
+    0% { opacity: 0; transform: translateX(-100%); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromRight {
+    0% { opacity: 0; transform: translateX(100%); }
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* Thêm cho nội dung cụ thể */
+.school-detail-left {
+    animation: slideIn 1s ease forwards;
+}
+
+.school-detail-right {
+    animation: slideInFromRight 1s ease forwards;
+}
+
+/* Chi tiết bổ sung khi hover */
+@keyframes growHover {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.school-hover-img {
+    animation: growHover 2.5s ease-in-out infinite alternate;
+}
+
+/* Tăng cường hiệu ứng đổi màu sắc của nền */
+@keyframes extendedColorShift {
+    0% { background: #1a1a2e; }
+    25% { background: #16213e; }
+    50% { background: #0f3460; }
+    75% { background: #1b1b3a; }
+    100% { background: #1a1a2e; }
+}
+
+.school-section {
+    animation: extendedColorShift 20s linear infinite;
+}
+

@@ -1,0 +1,6 @@
+document.querySelectorAll('.section').forEach(section => {
+    section.addEventListener('click', () => {
+        const sectionName = section.classList[1];
+        window.location.href = `${sectionName}.html`;
+    });
+});

@@ -1,0 +1,115 @@
+/* about.css */
+
+/* Định dạng cơ bản cho phần About Me */
+.about-section {
+    position: relative;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.5); /* Tạo lớp phủ mờ */
+    border-radius: 15px;
+}
+
+/* Định dạng cho nội dung chính */
+.about-banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    background-blend-mode: overlay;
+    transition: all 0.5s ease;
+}
+
+/* Hiệu ứng nền và phóng to khi di chuột qua */
+.about-banner:hover {
+    filter: brightness(1.2);
+    transform: scale(1.05);
+}
+
+/* Hiệu ứng chữ và biểu tượng đánh máy */
+.about-content {
+    color: #fff;
+    font-size: 1.6em;
+    text-align: center;
+    animation: typing 4s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 4px solid #ffdd57; /* Dòng nhấp nháy */
+}
+
+/* Hiệu ứng phóng to văn bản và sáng biểu tượng */
+.about-section i {
+    font-size: 3em;
+    color: #ffdd57;
+    transition: transform 0.5s ease, color 0.5s ease;
+    margin-bottom: 10px;
+}
+
+.about-section:hover i {
+    transform: scale(1.2);
+    color: #fff;
+}
+
+/* Tạo hiệu ứng sáng mờ cho tiêu đề */
+.about-section h2 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #ffdd57;
+    animation: glowText 2s ease-in-out infinite alternate;
+}
+
+/* Keyframes cho các hiệu ứng */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    0%, 50%, 100% { border-color: #ffdd57; }
+    25%, 75% { border-color: transparent; }
+}
+
+@keyframes glowText {
+    from { text-shadow: 0 0 10px #ffdd57, 0 0 20px #ffdd57; }
+    to { text-shadow: 0 0 30px #ffdd57, 0 0 60px #ffdd57; }
+}
+
+/* Hiệu ứng di chuột làm nổi background */
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.3));
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.about-section:hover::before {
+    opacity: 1;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.5));
+}
+
+/* Bong bóng nổi tạo cảm giác huyền ảo */
+@keyframes float {
+    0% { transform: translateY(0); opacity: 0.5; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+.bubble {
+    position: absolute;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    opacity: 0.8;
+    animation: float 10s linear infinite;
+    z-index: 0;
+}
+
+/* Đa dạng kích cỡ và màu sắc cho các bubble */
+.bubble.pink { background: rgba(255, 0, 150, 0.5); }
+.bubble.blue { background: rgba(0, 200, 255, 0.5); }

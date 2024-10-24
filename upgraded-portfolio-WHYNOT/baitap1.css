@@ -1,0 +1,236 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; 
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; 
+    min-height: 100vh; 
+    padding: 20px; 
+    background: linear-gradient(45deg, #000000, #1a237e, #4a148c, #000000); 
+    background-size: 300% 300%; 
+    animation: gradientMove 10s ease infinite; 
+    position: relative; 
+    overflow: hidden; 
+    margin: 0; 
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+/* Canvas for Star Animation */
+#starCanvas {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+    z-index: 0; 
+}
+
+/* Icon Trang Chủ */
+.home-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease; 
+    z-index: 100; 
+}
+
+.home-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+/* Ẩn chữ "Trang Chủ" trên mobile */
+@media (max-width: 768px) {
+    .home-icon {
+        padding: 10px; /* Adjust padding */
+        font-size: 18px;
+    }
+    .home-icon i {
+        margin-right: 0;
+    }
+    .home-icon span {
+        display: none;
+    }
+}
+
+/* Header */
+.header {
+    margin-top: 80px; 
+    z-index: 1; 
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+    border-radius: 20px;
+    background-clip: padding-box;
+    background: linear-gradient(90deg, #ff6a00, #ee0979);
+    border: 3px solid #fff;
+    width: auto;
+    height: auto;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.1); /* Hover effect to enlarge */
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #ffffff;
+    background: linear-gradient(90deg, #f5f7fa, #c3cfe2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Main Content */
+.main-content {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 40px;
+    z-index: 1; 
+}
+
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.course-item {
+    background-color: #1a1a1a;
+    border: 2px solid #0066cc; 
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.course-item:hover {
+    background-color: #333;
+    animation: shake 0.3s; 
+    animation-iteration-count: 1;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* Dropdown content */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #1a1a1a; 
+    border: 1px solid #0066cc;
+    padding-top: 10px;
+    border-radius: 8px;
+    width: 90%; 
+    left: 50%; 
+    transform: translateX(-50%) translateY(-10px); 
+    opacity: 0;
+    z-index: 10; 
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.dropdown-content.show {
+    display: block;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); 
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    color: #0066cc;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: block;
+    border: 2px solid #0066cc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.dropdown-content a:hover {
+    color: #ff6600;
+    border-color: #ff6600;
+    transform: translateX(-20px);
+}
+
+/* Mobile Design */
+@media (max-width: 768px) {
+    .logo-container {
+        flex-direction: column; 
+        align-items: center;
+        padding: 15px;
+        width: auto;
+    }
+    
+    .logo {
+        margin-right: 0; 
+        margin-bottom: 10px; 
+    }
+
+    .title {
+        font-size: 1.2em;
+        text-align: center;
+    }
+    
+    .main-content {
+        width: 95%;
+        margin-top: 20px;
+    }
+    
+    .course-grid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+    }
+
+    .dropdown-content a {
+        width: 90%; 
+        font-size: 16px; 
+    }
+
+    .home-icon {
+        top: 15px;
+        left: 15px;
+        font-size: 18px;
+        padding: 8px 15px; 
+    }
+}
